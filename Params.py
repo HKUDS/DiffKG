@@ -34,6 +34,7 @@ def ParseArgs():
 	parser.add_argument('--rebuild_k', type=int, default=1)
 	parser.add_argument('--e_loss', type=float, default=0.5)
 
+	parser.add_argument('--keepRate', type=float, default=0.5)
 	parser.add_argument('--res_lambda', type=float, default=0.5)
 	parser.add_argument('--triplet_num', type=int, default=10)
 	parser.add_argument('--cl_pattern', type=int, default=0)

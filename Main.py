@@ -141,7 +141,7 @@ class Coach:
 
 		with torch.no_grad():
 			index_, type_ = denoisedKG
-			mask = ((torch.rand(type_.shape[0]) + 0.5).floor()).type(torch.bool)
+			mask = ((torch.rand(type_.shape[0]) + args.keepRate).floor()).type(torch.bool)
 			denoisedKG = (index_[:, mask], type_[mask])
 			self.generatedKG = denoisedKG
 
