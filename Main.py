@@ -242,21 +242,8 @@ class Coach:
 			allRecall += recall
 			allNdcg += ndcg
 		return allRecall, allNdcg
-	
-def seed_it(seed):
-	random.seed(seed)
-	os.environ["PYTHONSEED"] = str(seed)
-	np.random.seed(seed)
-	torch.cuda.manual_seed(seed)
-	torch.cuda.manual_seed_all(seed)
-	torch.backends.cudnn.deterministic = True
-	torch.backends.cudnn.benchmark = True 
-	torch.backends.cudnn.enabled = True
-	torch.manual_seed(seed)
 
 if __name__ == '__main__':
-	seed_it(args.seed)
-
 	os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
 	logger.saveDefault = True
 	
