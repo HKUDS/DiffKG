@@ -23,9 +23,6 @@ class Model(nn.Module):
 
 		self.kg_dict = handler.kg_dict
 		self.edge_index, self.edge_type = self.sampleEdgeFromDict(self.kg_dict, triplet_num=args.triplet_num)
-
-	def getKG(self):
-		return [self.edge_index, self.edge_type]
 	
 	def getEntityEmbeds(self):
 		return self.eEmbeds
@@ -33,8 +30,11 @@ class Model(nn.Module):
 	def getUserEmbeds(self):
 		return self.uEmbeds
 				
-	def forward(self, adj, kg, mess_dropout=True):
-		hids_KG = self.rgat.forward(self.eEmbeds, self.rEmbeds, kg, mess_dropout)
+	def forward(self, adj, mess_dropout=True, kg=None):
+		if kg == None:
+			hids_KG = self.rgat.forward(self.eEmbeds, self.rEmbeds, [self.edge_index, self.edge_type], mess_dropout)
+		else:
+			hids_KG = self.rgat.forward(self.eEmbeds, self.rEmbeds, kg, mess_dropout)
 						
 		embeds = torch.concat([self.uEmbeds, hids_KG[:args.item, :]], axis=0)
 		embedsLst = [embeds]

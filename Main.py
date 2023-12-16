@@ -136,9 +136,6 @@ class Coach:
 		
 		log('KG built!')
 
-		kg = self.model.getKG()
-		self.kg = kg
-
 		with torch.no_grad():
 			index_, type_ = denoisedKG
 			mask = ((torch.rand(type_.shape[0]) + args.keepRate).floor()).type(torch.bool)
@@ -156,7 +153,7 @@ class Coach:
 			if args.cl_pattern == 0:
 				usrEmbeds, itmEmbeds = self.model(self.handler.torchBiAdj, denoisedKG)
 			else:
-				usrEmbeds, itmEmbeds = self.model(self.handler.torchBiAdj, kg)
+				usrEmbeds, itmEmbeds = self.model(self.handler.torchBiAdj)
 			ancEmbeds = usrEmbeds[ancs]
 			posEmbeds = itmEmbeds[poss]
 			negEmbeds = itmEmbeds[negs]
@@ -166,7 +163,7 @@ class Coach:
 			regLoss = calcRegLoss(self.model) * args.reg
 
 			if args.cl_pattern == 0:
-				usrEmbeds_kg, itmEmbeds_kg = self.model(self.handler.torchBiAdj, kg)
+				usrEmbeds_kg, itmEmbeds_kg = self.model(self.handler.torchBiAdj)
 			else:
 				usrEmbeds_kg, itmEmbeds_kg = self.model(self.handler.torchBiAdj, denoisedKG)
 			denoisedKGEmbeds = torch.concat([usrEmbeds, itmEmbeds], axis=0)
@@ -203,10 +200,9 @@ class Coach:
 		with torch.no_grad():
 			if args.cl_pattern == 0:
 				denoisedKG = self.generatedKG
-				usrEmbeds, itmEmbeds = self.model(self.handler.torchBiAdj, denoisedKG, False)
+				usrEmbeds, itmEmbeds = self.model(self.handler.torchBiAdj, mess_dropout=False, kg=denoisedKG)
 			else:
-				kg = self.kg
-				usrEmbeds, itmEmbeds = self.model(self.handler.torchBiAdj, kg, False)
+				usrEmbeds, itmEmbeds = self.model(self.handler.torchBiAdj, mess_dropout=False)
 
 		for usr, trnMask in tstLoader:
 			i += 1
@@ -242,8 +238,21 @@ class Coach:
 			allRecall += recall
 			allNdcg += ndcg
 		return allRecall, allNdcg
+	
+def seed_it(seed):
+	random.seed(seed)
+	os.environ["PYTHONSEED"] = str(seed)
+	np.random.seed(seed)
+	torch.cuda.manual_seed(seed)
+	torch.cuda.manual_seed_all(seed)
+	torch.backends.cudnn.deterministic = True
+	torch.backends.cudnn.benchmark = True 
+	torch.backends.cudnn.enabled = True
+	torch.manual_seed(seed)
 
 if __name__ == '__main__':
+	seed_it(args.seed)
+
 	os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
 	logger.saveDefault = True
 	
