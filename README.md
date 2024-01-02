@@ -1,8 +1,14 @@
-# Knowledge Graph Diffusion Model for Recommendation
+# DiffKG: Knowledge Graph Diffusion Model for Recommendation
 
-This is the PyTorch implementation for **DiffKG** proposed in the paper **Knowledge Graph Diffusion Model for Recommendation**, which is accepted by WSDM 2024.
+This is the PyTorch implementation for **DiffKG** proposed in the paper **DiffKG: Knowledge Graph Diffusion Model for Recommendation**, which is accepted by WSDM 2024 Oral.
 
-## 1. Running environment
+> Yangqin Jiang, Yuhao Yang, Lianghao Xia, and Chao Huang. 2024. DiffKG: Knowledge Graph Diffusion Model for Recommendation. In Proceedings of the 17th ACM International Conference on Web Search and Data Mining (WSDM ’24), March 4–8, 2024, Merida, Mexico. ACM, New York, NY, USA, 9 pages.
+
+![](./DiffKG.png)
+
+In this paper, we propose a novel knowledge graph diffusion model for recommendation, referred to as DiffKG. Our framework integrates a generative diffusion model with a data augmentation paradigm, enabling robust knowledge graph representation learning. This integration facilitates a better alignment between knowledge-aware item semantics and collaborative relation modeling. Moreover, we introduce a collaborative knowledge graph convolution mechanism that incorporates collaborative signals reflecting user-item interaction patterns, guiding the knowledge graph diffusion process.
+
+## 📝 Environment
 
 We develop our codes in the following environment:
 
@@ -11,7 +17,7 @@ We develop our codes in the following environment:
 - torch==1.11.0
 - scipy==1.9.1
 
-## 2. Datasets
+##📚 Datasets
 
 | Statistics          | Last-FM         | MIND            | Alibaba-iFashion |
 | ------------------- | --------------- | --------------- | ---------------- |
@@ -24,7 +30,7 @@ We develop our codes in the following environment:
 | # Relations         | 9               | 512             | 51               |
 | # Triplets          | 464,567         | 148,568         | 279,155          |
 
-## 3. How to run the codes
+## 🚀 How to run the codes
 
 The command lines to train DiffKG on the three datasets are as below. The un-specified hyperparameters in the commands are set as default.
 
@@ -44,5 +50,18 @@ python Main.py --data mind --e_loss 0.1 --temp 1 --ssl_reg 1 --mess_dropout_rate
 
 ```python
 python Main.py --data alibaba --reg 1e-6 --epoch 50 --ssl_reg 1 --temp 1
+```
+
+## 🌟 Citation
+
+If you find this work helpful to your research, please kindly consider citing our paper.
+
+```
+@article{jiang2023diffkg,
+  title={DiffKG: Knowledge Graph Diffusion Model for Recommendation},
+  author={Jiang, Yangqin and Yang, Yuhao and Xia, Lianghao and Huang, Chao},
+  journal={arXiv preprint arXiv:2312.16890},
+  year={2023}
+}
 ```
 
