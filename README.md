@@ -1,6 +1,6 @@
 # DiffKG: Knowledge Graph Diffusion Model for Recommendation
 
-This is the PyTorch implementation for **DiffKG** proposed in the paper **DiffKG: Knowledge Graph Diffusion Model for Recommendation**, which is accepted by WSDM 2024 Oral.
+This is the PyTorch implementation for **DiffKG** proposed in the paper [**DiffKG: Knowledge Graph Diffusion Model for Recommendation**](https://arxiv.org/pdf/2312.16890.pdf), which is accepted by WSDM 2024 Oral. 
 
 > Yangqin Jiang, Yuhao Yang, Lianghao Xia, and Chao Huang. 2024. DiffKG: Knowledge Graph Diffusion Model for Recommendation. In Proceedings of the 17th ACM International Conference on Web Search and Data Mining (WSDM ’24), March 4–8, 2024, Merida, Mexico. ACM, New York, NY, USA, 9 pages.
 
