@@ -17,7 +17,7 @@ We develop our codes in the following environment:
 - torch==1.11.0
 - scipy==1.9.1
 
-##📚 Datasets
+## 📚 Datasets
 
 | Statistics          | Last-FM         | MIND            | Alibaba-iFashion |
 | ------------------- | --------------- | --------------- | ---------------- |
