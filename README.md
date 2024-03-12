@@ -52,6 +52,41 @@ python Main.py --data mind --e_loss 0.1 --temp 1 --ssl_reg 1 --mess_dropout_rate
 python Main.py --data alibaba --reg 1e-6 --epoch 50 --ssl_reg 1 --temp 1
 ```
 
+## 👉 Code Structure
+
+```
+.
+├── README.md
+├── DiffKG.png
+├── performance.png
+├── Main.py
+├── Model.py
+├── Params.py
+├── DataHandler.py
+├── Utils
+│   ├── TimeLogger.py
+│   └── Utils.py
+└── Datasets
+    ├── alibaba
+    │   ├── trnMat.pkl
+    │   ├── tstMat.pkl
+    │   └── kg.txt
+    ├── lastFM
+    │   ├── trnMat.pkl
+    │   ├── tstMat.pkl
+    │   └── kg.txt
+    └── mind
+        ├── trnMat.pkl
+        ├── tstMat.pkl
+        └── kg.txt
+```
+
+## 🎯 Experimental Results
+
+Performance comparison of baselines on different datasets in terms of Recall@20 and NDCG@20:
+
+![](./performance.png)
+
 ## 🌟 Citation
 
 If you find this work helpful to your research, please kindly consider citing our paper.
