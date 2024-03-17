@@ -4,7 +4,7 @@ This is the PyTorch implementation for **DiffKG** proposed in the paper [**DiffK
 
 > Yangqin Jiang, Yuhao Yang, Lianghao Xia, and Chao Huang. 2024. DiffKG: Knowledge Graph Diffusion Model for Recommendation. In Proceedings of the 17th ACM International Conference on Web Search and Data Mining (WSDM ’24), March 4–8, 2024, Merida, Mexico. ACM, New York, NY, USA, 9 pages.
 
-![](./DiffKG.png)
+<img src="./DiffKG.png" style="zoom:30%;" />
 
 In this paper, we propose a novel knowledge graph diffusion model for recommendation, referred to as DiffKG. Our framework integrates a generative diffusion model with a data augmentation paradigm, enabling robust knowledge graph representation learning. This integration facilitates a better alignment between knowledge-aware item semantics and collaborative relation modeling. Moreover, we introduce a collaborative knowledge graph convolution mechanism that incorporates collaborative signals reflecting user-item interaction patterns, guiding the knowledge graph diffusion process.
 
@@ -51,6 +51,10 @@ python Main.py --data mind --e_loss 0.1 --temp 1 --ssl_reg 1 --mess_dropout_rate
 ```python
 python Main.py --data alibaba --reg 1e-6 --epoch 50 --ssl_reg 1 --temp 1
 ```
+
+## 🚀 Run DiffKG via SSLRec
+
+DiffKG has been integrated into [SSLRec](https://github.com/HKUDS/SSLRec)! SSLRec is a PyTorch-based open-source deep learning framework for recommender systems enhanced by self-supervised learning techniques. With SSLRec, you can easily compare our DiffKG with other research works in the field of KG-enhanced recommendation systems.
 
 ## 👉 Code Structure
 
