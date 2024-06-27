@@ -96,11 +96,12 @@ Performance comparison of baselines on different datasets in terms of Recall@20 
 If you find this work helpful to your research, please kindly consider citing our paper.
 
 ```
-@article{jiang2023diffkg,
-  title={DiffKG: Knowledge Graph Diffusion Model for Recommendation},
+@inproceedings{jiang2024diffkg,
+  title={Diffkg: Knowledge graph diffusion model for recommendation},
   author={Jiang, Yangqin and Yang, Yuhao and Xia, Lianghao and Huang, Chao},
-  journal={arXiv preprint arXiv:2312.16890},
-  year={2023}
+  booktitle={Proceedings of the 17th ACM International Conference on Web Search and Data Mining},
+  pages={313--321},
+  year={2024}
 }
 ```
 
