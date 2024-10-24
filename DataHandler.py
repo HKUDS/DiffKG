@@ -137,7 +137,7 @@ class DataHandler:
 		print("kg shape: ", self.kg_matrix.shape)
 		print("number of edges in KG: ", len(self.kg_edges))
 		
-		self.diffusionData = DiffusionData(torch.FloatTensor(self.kg_matrix.A))
+		self.diffusionData = DiffusionData(self.kg_matrix.A)
 		self.diffusionLoader = dataloader.DataLoader(self.diffusionData, batch_size=args.batch, shuffle=True, num_workers=0)
 
 		self.relation_dict = self.RelationDictBuild()
@@ -193,7 +193,7 @@ class DiffusionData(data.Dataset):
 	
 	def __getitem__(self, index):
 		item = self.data[index]
-		return item, index
+		return torch.FloatTensor(item), index
 	
 	def __len__(self):
 		return len(self.data)
