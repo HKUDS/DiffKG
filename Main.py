@@ -151,7 +151,7 @@ class Coach:
 			self.opt.zero_grad()
 
 			if args.cl_pattern == 0:
-				usrEmbeds, itmEmbeds = self.model(self.handler.torchBiAdj, denoisedKG)
+				usrEmbeds, itmEmbeds = self.model(self.handler.torchBiAdj, kg=denoisedKG)
 			else:
 				usrEmbeds, itmEmbeds = self.model(self.handler.torchBiAdj)
 			ancEmbeds = usrEmbeds[ancs]
@@ -165,7 +165,7 @@ class Coach:
 			if args.cl_pattern == 0:
 				usrEmbeds_kg, itmEmbeds_kg = self.model(self.handler.torchBiAdj)
 			else:
-				usrEmbeds_kg, itmEmbeds_kg = self.model(self.handler.torchBiAdj, denoisedKG)
+				usrEmbeds_kg, itmEmbeds_kg = self.model(self.handler.torchBiAdj, kg=denoisedKG)
 			denoisedKGEmbeds = torch.concat([usrEmbeds, itmEmbeds], axis=0)
 			kgEmbeds = torch.concat([usrEmbeds_kg, itmEmbeds_kg], axis=0)
 

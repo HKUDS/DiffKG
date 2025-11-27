@@ -43,13 +43,13 @@ python Main.py --data lastfm --reg 1e-5 --mess_dropout_rate 0.2 --layer_num_kg 2
 - MIND
 
 ```python
-python Main.py --data mind --e_loss 0.1 --temp 1 --ssl_reg 1 --mess_dropout_rate 0.2 --res_lambda 1
+python Main.py --data mind --e_loss 0.1 --temp 1 --ssl_reg 1 --mess_dropout_rate 0.4 --res_lambda 1 --keepRate 1
 ```
 
 - Alibaba-iFashion
 
 ```python
-python Main.py --data alibaba --reg 1e-6 --epoch 50 --ssl_reg 1 --temp 1
+python Main.py --data alibaba --reg 1e-6 --epoch 50 --ssl_reg 1 --temp 1 --keepRate 1
 ```
 
 ## 🚀 Run DiffKG via SSLRec
@@ -89,7 +89,12 @@ DiffKG has been integrated into [SSLRec](https://github.com/HKUDS/SSLRec)! SSLRe
 
 Performance comparison of baselines on different datasets in terms of Recall@20 and NDCG@20:
 
-![](./performance.png)
+|           | LastFM | MIND   | Alibaba |
+| --------- | ------ | ------ | ------- |
+| Recall@20 | 0.0974 | 0.0592 | 0.1220  |
+| NDCG@20   | 0.0903 | 0.0370 | 0.0768  |
+
+Note: Due to issues in the original model training code, the results of the related models have changed after our fixes, leading to inconsistencies with those presented in the paper.
 
 ## 🌟 Citation
 
